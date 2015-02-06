@@ -1,0 +1,468 @@
+@import "variables";
+
+.abs {
+  position: absolute;
+}
+
+.rel {
+  position: relative;
+}
+
+a.disabled {
+  color: $gray-light;
+  pointer-events: none;
+  text-decoration: none;
+}
+
+.img {
+  font-size: 0;
+  line-height: 0;
+}
+
+.export-overlay,
+.io-overlay,
+.rfp-overlay {
+  background: rgba(white, 0.8);
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  z-index: 100;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.export-overlay.visible,
+.io-overlay.visible,
+.rfp-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav {
+  font-size: 0;
+  list-style-type: none;
+  height: 30px;
+  line-height: 30px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.nav li {
+  font-size: 14px;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.ovh {
+  overflow: hidden;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.z-10000 {
+  z-index: 10000;
+}
+
+@-webkit-keyframes pulsate {
+  0%   { transform: scale(0.5); }
+  50%  { transform: scale(1);   }
+  100% { transform: scale(0.5); }
+}
+
+.clickable {
+  -webkit-animation: pulsate 2000ms infinite ease-in-out;
+  background: rgba($secondary-accent, 0.7);
+  border: 1px solid $secondary-accent-shaded;
+  border-radius: 12px;
+  display: none;
+  height: 12px;
+  margin-top: -6px;
+  margin-left: -6px;
+  pointer-events: none;
+  position: absolute;
+    top: 50%;
+    left: 50%;
+  width: 12px;
+  z-index: 10;
+}
+
+.focusable {
+  border: 1px solid transparent;
+  border-radius: 3px;
+  color: $gray-darkest;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.focusable.active {
+  border-color: $primary-accent;
+  color: $primary-accent-shaded;
+  z-index: 10;
+}
+
+.focusable.active:before {
+  cursor: default;
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.focusable > .content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+// Containers
+
+.contract-body,
+.contract-controls,
+.graphs,
+.plan-controls,
+.messages,
+.messages-all,
+.messages-rfp,
+.messages-io,
+.plan-body,
+.plan-edit,
+.research {
+  display: none;
+}
+
+.graphs {
+  background: $gray-lightest-tinted;
+  border-color: $gray-light;
+  border-style: solid;
+  border-width: 1px 1px 0 1px;
+  height: 352px;
+  overflow: hidden;
+  padding: 20px 17px 15px 17px;
+  position: relative;
+  width: 100%;
+}
+
+.contract-graphs,
+.plan-graphs {
+  position: absolute;
+  top: 20px;
+  left: 17px;
+  transform: translateX(-1200px);
+  transition: transform 0.2s ease-in-out;
+}
+
+.contract-graphs.visible,
+.plan-graphs.visible {
+  transform: translateX(0px);
+}
+
+.modal {
+  background-clip: padding-box;
+  border-radius: 5px;
+  border: 1px solid $gray-light;
+  box-shadow: 0 3px 6px rgba($gray-darkest, 0.1);
+  height: 704px;
+  opacity: 0;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -52%);
+  transition: all 0.2s ease-in-out;
+  width: 826px;
+}
+
+.visible > .modal {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.messages {
+  height: 479px;
+  overflow: hidden;
+  position: relative;
+}
+
+.messages:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 1px;
+  left: 1px;
+  border-top: 1px solid $gray-light;
+  z-index: 10;
+}
+
+.messages-popout {
+  border-bottom: 1px solid $gray-light;
+}
+
+.messages-scroll {
+  background: white;
+  float: right;
+  height: 479px;
+  width: 889px;
+  overflow: auto;
+}
+
+.plan-tooltip,
+.contract-tooltip {
+  opacity: 0;
+  transform: translateY(-2%);
+  transition: all 0.2s ease-in-out;
+}
+
+.plan-tooltip.visible,
+.contract-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.plan-tooltip {
+  left: -20px;
+  top: 91px;
+}
+
+.contract-tooltip {
+  right: -20px;
+  top: 44px;
+}
+
+.rfp-panel {
+  background-clip: padding-box;
+  border-radius: 0 5px 5px 0;
+  box-shadow: -1px 0 2px rgba($gray-darkest, 0.1);
+  height: 725px;
+  top: 0;
+  right: 0;
+  width: 454px;
+  transform: translateX(457px);
+  transition: transform 0.2s ease-in-out;
+  z-index: 10;
+}
+
+.rfp-panel.visible {
+  transform: translateX(0);
+}
+
+.rfp-dropdown {
+  display: none;
+  top: 103px;
+  right: 92px;
+}
+
+// Links
+
+.rfp-link {
+  height: 24px;
+  top: 246px;
+  width: 119px;
+  z-index: 100;
+}
+
+.all-link {
+  @extend .rfp-link;
+  top: 222px;
+  width: 45px;
+}
+
+.io-link {
+  @extend .rfp-link;
+  top: 270px;
+  width: 125px;
+}
+
+.contract-link {
+  left: 85px;
+  height: 48px;
+  width: 113px;
+}
+
+.plan-link {
+  left: 0;
+  height: 48px;
+  width: 85px;
+}
+
+// States
+
+.visible {
+  display: block !important;
+}
+
+// Toggles and Triggers
+
+.contract-tooltip-toggle {
+  border-radius: 3px;
+  line-height: 28px;
+  right: 147px;
+  bottom: 37px;
+  height: 30px;
+  width: 118px;
+}
+
+.popout-toggle {
+  font-size: 14px;
+  bottom: 20px;
+  left: 15px;
+  text-decoration: none !important;
+}
+
+.graphs-toggle,
+.messages-toggle,
+.research-toggle {
+  top: 30px;
+  height: 96px;
+  width: 96px;
+}
+
+.graphs-toggle {
+  background: url("../images/roadshow/icons.png") no-repeat top -155px center;
+  right: 98px;
+}
+
+.messages-toggle {
+  background: url("../images/roadshow/icons.png") no-repeat top 37px center;
+  right: 1px;
+}
+
+.research-toggle {
+  background: url("../images/roadshow/icons.png") no-repeat top -347px center;
+  right: 195px;
+}
+
+.graphs-toggle.active {
+  background-position: top -251px center;
+}
+
+.messages-toggle.active {
+   background-position: top -59px center;
+}
+
+.research-toggle.active {
+   background-position: top -443px center;
+}
+
+.rfp-overlay-toggle {
+  border-radius: 3px;
+  right: 84px;
+  top: 9px;
+  height: 30px;
+  width: 79px;
+}
+
+.overlay-close-toggle {
+  border-radius: 0 5px 0 0;
+  right: 0px;
+  top: 0px;
+  height: 45px;
+  width: 60px;
+}
+
+.overlay-send-close-toggle {
+  border: 1px solid transparent;
+  border-radius: 3px;
+  bottom: 9px;
+  left: 48px;
+  height: 30px;
+  width: 50px;
+}
+
+.export-overlay .overlay-send-close-toggle {
+  left: 9px;
+  width: 59px;
+}
+
+.rfp-overlay-panel-toggle {
+  right: 59px;
+  top: 0;
+  height: 46px;
+  width: 132px;
+}
+
+.rfp-overlay-nested-panel-toggle {
+  right: 14px;
+  top: 7px;
+  height: 24px;
+  width: 27px;
+}
+
+.rfp-overlay-dropdown-toggle {
+  right: 92px;
+  top: 103px;
+  height: 30px;
+  width: 168px;
+  z-index: 10;
+}
+
+.io-overlay-toggle {
+  border-radius: 3px;
+  right: 9px;
+  top: 9px;
+  height: 30px;
+  width: 66px;
+}
+
+.export-overlay-toggle {
+  border-radius: 3px;
+  right: 9px;
+  bottom: 38px;
+  height: 30px;
+  width: 66px;
+}
+
+.plan-tooltip-toggle {
+  background: url("../images/roadshow/plan-tooltip-sprite.png") no-repeat top 9px center;
+  border-radius: 3px;
+  height: 30px;
+  bottom: 38px;
+  left: 10px;
+  width: 30px;
+}
+
+.plan-tooltip-toggle.active {
+  background-position: bottom 9px center;
+}
+
+.plan-edit-toggle {
+  height: 30px;
+  line-height: 28px;
+    bottom: 38px;
+    right: 172px;
+  width: 73px;
+}
+
+// Tour Components
+
+#graphs.tour-step-backdrop {
+  background: $gray-lightest-tinted;
+}
+
+#graphs.tour-step-backdrop,
+#messages.tour-step-backdrop,
+#research.tour-step-backdrop {
+  border-bottom: 1px solid $gray-light;
+}
+
+// Tour Links
+
+.step-2 {
+  height: 18px;
+  top: 125px;
+  left: 233px;
+  width: 305px;
+  z-index: 10;
+}

@@ -1,0 +1,122 @@
+---
+title: Stacked Grid Card Sort Prototype
+layout: default
+custom_css: [stacked-grid.css]
+custom_js: [vendor/numeral.min.js, stacked-grid.js]
+---
+
+<div class="grid-wrapper">
+  {% for property in site.data.properties %}
+  <table id="{{ property.id }}">
+    <colgroup>
+      <col class="name">
+      <col class="details">
+      <col class="dates">
+      <col class="inventory">
+      <col class="costs">
+      <col class="fees">
+      <col class="margin">
+    </colgroup>
+    <thead>
+      <tr>
+        <th class="name">{{ property.name }}</th>
+        <th class="details">Details</th>
+        <th class="dates">Dates</th>
+        <th class="inventory">Inventory</th>
+        <th class="costs">Costs</th>
+        <th class="fees">Fees</th>
+        <th class="margin">Margin</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for tactic in property.tactics %}
+    <tr>
+      <td class="name">
+        <ul>
+          <li class="name">{{ tactic.name }}</li>
+        </ul>
+      </td>
+      <td class="details">
+        <ul>
+          <li class="platform" data-label="platform">{{ tactic.platform }}</li>
+          <li class="format" data-label="format">{{ tactic.format }}</li>
+          <li class="size" data-label="size">{{ tactic.size }}</li>
+          <li class="position" data-label="position">{{ tactic.position }}</li>
+        </ul>
+      </td>
+      <td class="dates">
+        <ul>
+          <li class="start-date" data-label="starts">{{ tactic.start-date }}</li>
+          <li class="end-date" data-label="ends">{{ tactic.end-date }}</li>
+        </ul>
+      </td>
+      <td class="inventory">
+        <ul>
+          <li class="unit-type" data-label="unit type">{{ tactic.unit-type }}</li>
+          <li class="total" data-label="total">{{ tactic.total }}</li>
+          <li class="available" data-label="available">{{ tactic.available }}</li>
+          <li class="quantity" data-label="quantity">{{ tactic.quantity }}</li>
+          <li class="sov" data-label="SOV">{{ tactic.sov }}</li>
+        </ul>
+      </td>
+      <td class="costs">
+        <ul>
+          <li class="rate-type" data-label="rate type">{{ tactic.cost-type }}</li>
+          <li class="media-rate" data-label="media rate">{{ tactic.media-rate }}</li>
+          <li class="media-cost" data-label="media cost">{{ tactic.media-cost }}</li>
+          <li class="client-rate" data-label="client rate">{{ tactic.client-rate }}</li>
+          <li class="client-cost" data-label="client cost">{{ tactic.client-cost }}</li>
+        </ul>
+      </td>
+      <td class="fees">
+        <ul>
+          <li class="add-on-rate" data-label="add-on rate">{{ tactic.add-on-rate }}</li>
+          <li class="add-on-cost" data-label="add-on cost">{{ tactic.add-on-cost }}</li>
+        </ul>
+      </td>
+      <td class="margin">
+        <ul>
+          <li class="margin" data-label="margin">{{ tactic.margin }}</li>
+          <li class="margin-cost" data-label="margin amt">{{ tactic.margin-cost }}</li>
+        </ul>
+      </td>
+    </tr>
+    {% endfor %}
+     <tr class="subtotals">
+       <td colspan="3" class="name">
+         <ul>
+           <li class="name">Subtotals for {{ property.name }}</li>
+         </ul>
+       </td>
+       <td class="contracted">
+         <ul>
+           <li class="quantity" data-total="impressions"></li>
+           <li class="quantity" data-total="clicks"></li>
+         </ul>
+       </td>
+       <td class="costs">
+         <ul>
+           <li class="media-rate" data-total="eCPM media"></li>
+           <li class="media-rate" data-total="eCPC media"></li>
+           <li class="media-cost" data-total="media cost"></li>
+           <li class="client-rate" data-total="eCPM client"></li>
+           <li class="client-rate" data-total="eCPC client"></li>
+           <li class="client-cost" data-total="client cost"></li>
+         </ul>
+       </td>
+       <td class="fees">
+         <ul>
+           <li class="add-on-cost" data-total="add-on cost"></li>
+         </ul>
+       </td>
+       <td class="margin">
+         <ul>
+           <li class="margin-cost" data-total="margin amt"></li>
+         </ul>
+       </td>
+     </tr>
+   </tbody>
+  </table>
+  {% endfor %}
+  <div class="grid-overlay"></div>
+</div>

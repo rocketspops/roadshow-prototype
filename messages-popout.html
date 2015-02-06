@@ -1,0 +1,71 @@
+---
+title: 2014 Roadshow Prototype - Messages
+layout: default
+exclude_from_index: true
+---
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    $(window).load(function() {
+      var folder = "#" + window.opener.idOpenFolder();
+      $(folder).siblings().removeClass("visible");
+      $(folder).toggleClass("visible");
+
+      setTimeout(function () {
+        window.opener.toggleMessages();
+      }, 300);
+
+    });
+
+    $(window).unload(function() {
+      window.opener.toggleMessages();
+    });
+
+    $(".js-link").on("click",function(e) {
+      folder = $(this).attr("href");
+      console.log("clicked");
+      window.opener.syncFolderRemote(folder);
+    });
+
+  });
+</script>
+
+<div id="messages" class="img messages messages-popout visible">
+  <div id="messages-io" class="abs img messages-io">
+    <a href="#messages-rfp" class="abs js-link rfp-link">
+      <span class="clickable"></span>
+    </a>
+    <a href="#messages-all" class="abs js-link all-link">
+      <span class="clickable"></span>
+    </a>
+    <img src="images/roadshow/sidebar-io.png">
+    <div class="messages-scroll">
+      <img src="images/roadshow/messages-io.png">
+    </div>
+  </div>
+  <div id="messages-rfp" class="abs img messages-rfp">
+    <a href="#messages-all" class="abs js-link all-link">
+      <span class="clickable"></span>
+    </a>
+    <a href="#messages-io" class="abs js-link io-link">
+      <span class="clickable"></span>
+    </a>
+    <img src="images/roadshow/sidebar-rfp.png">
+    <div class="messages-scroll">
+      <img src="images/roadshow/messages-rfp.png">
+    </div>
+  </div>
+  <div id="messages-all" class="abs img messages-all">
+    <a href="#messages-rfp" class="abs js-link rfp-link">
+      <span class="clickable"></span>
+    </a>
+    <a href="#messages-io" class="abs js-link io-link">
+      <span class="clickable"></span>
+    </a>
+    <img src="images/roadshow/sidebar-all.png">
+    <div class="messages-scroll">
+      <img src="images/roadshow/messages-all.png">
+    </div>
+  </div>
+</div>

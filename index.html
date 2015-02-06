@@ -1,0 +1,15 @@
+---
+title: Centro Prototypes
+layout: default
+exclude_from_index: true
+---
+
+<ul>
+  {% for page in site.html_pages %}
+    {% unless page.exclude_from_index %}
+      <li>
+        <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+      </li>
+    {% endunless %}
+  {% endfor %}
+</ul>

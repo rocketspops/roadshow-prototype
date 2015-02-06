@@ -1,0 +1,284 @@
+@import "variables";
+
+h6 {
+  color: $gray-light;
+  margin: 0 0 6px 0;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li { list-style-type: none; }
+
+/* Grid Styles
+   ========================================================================== */
+
+.grid-wrapper {
+  border: 1px solid $gray-light;
+  clear: both;
+  position: relative;
+}
+
+.grid-controls {
+  float: right;
+  font-size: 0;
+  margin-bottom: 12px;
+}
+
+.grid-overlay {
+  background: rgba(white, 0.85);
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  transition: opacity 0.1s;
+  z-index: 10;
+}
+
+/* Table Styles
+   ========================================================================== */
+
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+table + table { border-top: none; }
+
+col {
+  &.dates      { width: 130px; }
+  &.details    { width: 166px; }
+  &.contracted { width: 175px; }
+  &.rates      { width: 148px; }
+  &.costs      { width: 148px; }
+
+  /* Card Sort Values */
+  &.cost       { width: 150px; }
+  &.fees       { width: 148px; }
+  &.inventory  { width: 165px; }
+  &.margin     { width: 148px; }
+}
+
+/* Table Rows */
+
+tr:not(:last-child) {
+  border-bottom: 1px solid $gray-lightest;
+}
+
+.subtotals {
+  background: rgba($gray-lightest, 0.25);
+  transition: background-color 0.1s;
+}
+
+.subtotals {
+  .name { color: $gray-light; }
+  .contracted,
+  .costs,
+  .rates,
+  .margin,
+  .fees { font-weight: 700; }
+  li:after {
+    content: attr(data-total);
+    font-weight: 400;
+  }
+}
+
+/* Table Header */
+
+th {
+  background: $gray-lightest;
+  border-color: $gray-lighter;
+  border-style: solid;
+  border-width: 1px 0;
+  color: $gray-dark;
+  font-weight: 400;
+  height: 30px;
+  padding: 0 10px;
+  text-align: right;
+}
+
+table:first-of-type th { border-top-color: transparent; }
+
+th {
+  &.name       { text-align: left; }
+  &.dates      { padding-right: 43px; }
+  &.details    { padding-right: 58px; }
+  &.contracted { padding-right: 76px; }
+  &.rates      { padding-right: 77px; }
+  &.costs      { padding-right: 52px; }
+
+  /* Card Sort Values */
+  &.cost       { padding-right: 77px; }
+  &.fees       { padding-right: 75px; }
+  &.inventory  { padding-right: 76px; }
+  &.margin       { padding-right: 75px; }
+}
+
+/* Table Cells */
+
+td {
+  padding: 6px 10px;
+  position: relative;
+  vertical-align: top;
+}
+
+tr:hover td {
+  cursor: pointer;
+  z-index: 20;
+}
+
+/* Table Lists */
+
+table li {
+  position: relative;
+  text-align: right;
+  white-space: nowrap;
+}
+
+table li:after {
+  color: $gray-light;
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 400 !important;
+  line-height: 1;
+  margin-left: 5px;
+  text-align: left;
+}
+
+.dates      { li:after { width: 28px; } }
+.details    { li:after { width: 43px; } }
+.contracted { li:after { width: 61px; } }
+.rates      { li:after { width: 62px; } }
+.costs      { li:after { width: 37px; } }
+
+/* Card Sort Values */
+.cost       { li:after { width: 62px; } }
+.fees       { li:after { width: 60px; } }
+.inventory  { li:after { width: 61px; } }
+.margin     { li:after { width: 60px; } }
+
+table li.name {
+  text-align: left;
+  white-space: normal;
+}
+
+/* Form Styles
+   ========================================================================== */
+
+button {
+  background: $gray-lighter;
+  border: 1px solid darken($gray-light, 10%);
+  border-radius: 3px;
+  font-size: 14px;
+  height: 30px;
+  line-height: 28px;
+  outline: none;
+  padding: 0 10px;
+  position: relative;
+}
+
+button.left {
+  border-radius: 3px 0 0 3px;
+}
+
+button.right {
+  border-left: none;
+  border-radius: 0 3px 3px 0;
+}
+
+button [class*="-icon"] {
+  position: relative;
+  top: 2px;
+}
+
+form {
+  background: white;
+  border: 1px solid $gray-light;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba($gray-darkest, 0.10);
+  font-size: 0;
+  line-height: 18px;
+  overflow: hidden;
+  position: absolute;
+    top: 36px;
+    right: 6px;
+  text-align: left;
+  z-index: 30;
+  width: 492px;
+}
+
+.focus-controls-menu {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.focus-controls-menu.is-visible {
+  pointer-events: auto;
+}
+
+fieldset {
+  border: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 0;
+  padding: 10px;
+  vertical-align: top;
+}
+
+label { cursor: pointer; }
+
+input[type="checkbox"] {
+  margin-right: 2px;
+  position: relative;
+  top: -1px;
+}
+
+/* States
+   ========================================================================== */
+
+.is-inFocusMode .subtotals { background: white; }
+
+.is-readyForFocusMode,
+.is-readyForFocusMode td { z-index: 20; }
+
+.is-visible { opacity: 1; }
+
+button.is-active {
+  background: $gray-light;
+}
+
+/* Icons
+   ========================================================================== */
+
+.flag {
+  color: $gray-lighter;
+  font-size: 13px;
+  position: relative;
+    top: 2px;
+  padding-right: 10px;
+}
+
+.flag:hover {
+  color: darken($gray-lighter, 10%);
+}
+
+.flag:active {
+  color: darken($gray-lighter, 15%);
+}
+
+
+.flag.is-active {
+  color: $primary-accent;
+}
+
+.flag.is-active:active {
+  color: darken($primary-accent, 10%);
+}

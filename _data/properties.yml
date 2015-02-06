@@ -1,0 +1,113 @@
+- name: "Travel and Leisure"
+  tactics:
+    - name: "weather/travel/entertainment/news-chicago DMA"
+      start-date: 2/1/15
+      end-date: 2/28/15
+      platform: Tablet App
+      format: Display
+      size: 160×600
+      position: ATF
+      unit-type: Click
+      total: --
+      available: "600,000"
+      quantity: "5,000"
+      sov: --
+      cost-type: CPC
+      add-on-rate: --
+      media-rate: "$2.75"
+      client-rate: "$3.05"
+      margin: "10%"
+      media-cost: "$13,750.00"
+      add-on-cost: "$5.00"
+      margin-cost: "$1,527.78"
+      client-cost: "$15,277.78"
+
+    - name: "Travel Entertainment Women’s Channel / Geo: Chicago"
+      start-date: 2/1/15
+      end-date: 2/28/15
+      platform: Web Browser
+      format: Display
+      size: 300×250
+      position: ATF
+      unit-type: Impression
+      total: "750,000"
+      available: "600,000"
+      quantity: "305,000"
+      sov: "40.67%"
+      cost-type: CPM
+      add-on-rate: --
+      media-rate: "$7.50"
+      client-rate: "$8.38"
+      margin: "10%"
+      media-cost: "$2,287.50"
+      add-on-cost: "$15.25"
+      margin-cost: "$254.17"
+      client-cost: "$2,556.92"
+
+    - name: "Affluent Female - Travel Enthusiast Premium Display"
+      start-date: 2/1/15
+      end-date: 2/28/15
+      platform: Web Browser
+      format: Display
+      size: 300×250
+      position: ATF
+      unit-type: Impression
+      total: "750,000"
+      available: "600,000"
+      quantity: "225,000"
+      sov: "30.00%"
+      cost-type: CPM
+      add-on-rate: --
+      media-rate: "$9.00"
+      client-rate: "$10.05"
+      margin: "10%"
+      media-cost: "$2,025.00"
+      add-on-cost: "$11.25"
+      margin-cost: "$225.00"
+      client-cost: "$2,261.25"
+
+    - name: "Travel and Leisure - Backpacks/Hike/Camp Category"
+      start-date: 2/1/15
+      end-date: 2/28/15
+      platform: Web Browser
+      format: Display
+      size: 728×90
+      position: BTF
+      unit-type: Impression
+      total: "1,500,000"
+      available: "600,000"
+      quantity: "575,000"
+      sov: "38.33%"
+      cost-type: CPM
+      add-on-rate: --
+      media-rate: "$13.00"
+      client-rate: "$14.95"
+      margin: "10%"
+      media-cost: "$7,475.00"
+      add-on-cost: "$28.75"
+      margin-cost: "$830.56"
+      client-cost: "$8,334.31"
+
+- name: "Trip Advisor"
+  tactics:
+    - name: "Run of Slate News & Lifestyle_Geo-Targeted: Oregon"
+      start-date: 2/1/15
+      end-date: 2/28/15
+      platform: Mobile App
+      format: Display
+      size: 180×150
+      position: ATF
+      unit-type: Click
+      total: --
+      available: "600,000"
+      quantity: "5,000"
+      sov: --
+      cost-type: CPC
+      add-on-rate: --
+      media-rate: "$2.50"
+      client-rate: "$2.78"
+      margin: "10%"
+      media-cost: "$12,500.00"
+      add-on-cost: "$5.00"
+      margin-cost: "$1,388.89"
+      client-cost: "$13,893.89"

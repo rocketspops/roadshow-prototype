@@ -1,0 +1,66 @@
+---
+title: Horizontal Grid Prototype
+layout: open
+custom_css: []
+custom_js: []
+---
+
+<style>
+  div {
+    background: #f8f9f9;
+    overflow: scroll;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    z-index: 1;
+  }
+
+  div.bar {
+    background: transparent;
+    position: fixed;
+    top: auto;
+    height: 66px;
+  }
+
+  div.grid {
+    position: absolute;
+    width: 1871px;
+  }
+
+  div img {
+    position: absolute;
+  }
+
+  div img.right {
+    right: 0;
+    bottom: 0;
+  }
+
+  div img.left {
+    left: 0;
+    bottom: 0;
+  }
+
+  div:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  @media (min-width: 1871px) {
+    div:after {
+      border-right: 1px solid #A0ADB2;
+    }
+  }
+</style>
+
+<div class="grid">
+  <img src="images/grid/horizontal.png" alt="">
+</div>
+<div class="bar">
+  <img class="left" src="images/grid/total-bar.png" alt="">
+  <img class="right" src="images/grid/totals.png" alt="">
+</div>

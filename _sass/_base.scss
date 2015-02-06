@@ -1,0 +1,82 @@
+@import "normalize";
+@import "variables";
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-weight: 400;
+  font-style: normal;
+  src: url("../fonts/source-sans-pro/source-sans-pro-regular.woff");
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-weight: 600;
+  font-style: normal;
+  src: url("../fonts/source-sans-pro/source-sans-pro-semibold.woff");
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-weight: 700;
+  font-style: normal;
+  src: url("../fonts/source-sans-pro/source-sans-pro-bold.woff");
+}
+
+html {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  -moz-box-sizing: inherit;
+}
+
+body {
+  color: $gray-darkest;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  display: block;
+}
+
+div {
+  position: relative;
+}
+
+header {
+  height: 30px;
+  margin-bottom: 20px;
+  z-index: 1000;
+}
+
+main {
+  margin: 0 auto;
+  position: relative;
+  padding: 20px;
+  width: 1220px;
+}
+
+a {
+  color: $primary-accent;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+audio {
+  width: 100%;
+}
+
+p {
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0 0 10px 0;
+}
