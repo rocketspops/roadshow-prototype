@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+  <title>Roadshow Prototype with Guided Tour</title>
+  <!-- Defaults -->
+  <link rel="stylesheet" href="/roadshow-prototype/css/default.css">
+  <link rel="stylesheet" href="/roadshow-prototype/css/vendor/ss-standard.css">
+  <link href="/roadshow-prototype/favicon.ico?v=1" rel="shortcut icon" type="image/x-icon" />
+  <script src="/roadshow-prototype/js/vendor/jquery-2.1.1.min.js"></script>
+  <script src="/roadshow-prototype/js/vendor/jquery-function-toggle.js"></script>
+  <!-- Custom Includes -->
+  
+    <link rel="stylesheet" href="/roadshow-prototype/css/roadshow.css">
+  
+  
+    <script src="/roadshow-prototype/js/vendor/bootstrap-tour-standalone.min.js"></script>
+  
+    <script src="/roadshow-prototype/js/roadshow-tour.js"></script>
+  
+    <script src="/roadshow-prototype/js/roadshow.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <ul class="nav">
+    <li>
+      <a id="clickable-toggle" href="#" class="clickable-toggle"></a>
+    </li>
+    <li>
+      <a id="tour-trigger" href="#">Start Guided Tour</a>
+    </li>
+  </ul>
+</header>
+
+<div class="img">
+  <a id="messages-toggle" class="abs js-slide-toggle messages-toggle" href="#messages">
+    <span class="clickable"></span>
+  </a>
+  <a id="graphs-toggle" class="abs js-slide-toggle graphs-toggle" href="#graphs">
+    <span class="clickable"></span>
+  </a>
+  <a id="research-toggle" class="abs js-slide-toggle research-toggle" href="#research">
+    <span class="clickable"></span>
+  </a>
+  <img src="images/roadshow/header.png">
+</div>
+
+<div id="graphs" class="img graphs slide">
+  <div id="plan-graphs" class="plan-graphs visible">
+    <a id="step-2" href="#" class="abs tour-link step-2">
+      <span class="clickable"></span>
+    </a>
+    <img src="images/roadshow/plan-graphs.png">
+  </div>
+  <div id="contract-graphs" class="contract-graphs">
+    <img src="images/roadshow/contract-graphs.png">
+  </div>
+</div>
+
+<div id="messages" class="img messages slide">
+  <div id="messages-io" class="abs img messages-io">
+    <a href="#messages-rfp" class="abs js-link rfp-link">
+      <span class="clickable"></span>
+    </a>
+    <a href="messages-popout.html" class="abs js-popout-toggle popout-toggle">
+      Pop Out Messages
+      <span class="clickable"></span>
+    </a>
+    <a href="#messages-all" class="abs js-link all-link">
+      <span class="clickable"></span>
+    </a>
+    <img src="images/roadshow/sidebar-io.png">
+    <div class="messages-scroll">
+      <img src="images/roadshow/messages-io.png">
+    </div>
+  </div>
+  <div id="messages-rfp" class="abs img messages-rfp">
+    <a href="#messages-all" class="abs js-link all-link">
+      <span class="clickable"></span>
+    </a>
+    <a href="#messages-io" class="abs js-link io-link">
+      <span class="clickable"></span>
+    </a>
+    <a href="messages-popout.html" class="abs js-popout-toggle popout-toggle">
+      Pop Out Messages
+      <span class="clickable"></span>
+    </a>
+    <img src="images/roadshow/sidebar-rfp.png">
+    <div class="messages-scroll">
+      <img src="images/roadshow/messages-rfp.png">
+    </div>
+  </div>
+  <div id="messages-all" class="abs img visible messages-all">
+    <a href="#messages-rfp" class="abs js-link rfp-link">
+      <span class="clickable"></span>
+    </a>
+    <a href="#messages-io" class="abs js-link io-link">
+      <span class="clickable"></span>
+    </a>
+    <a href="messages-popout.html" class="abs js-popout-toggle popout-toggle">
+      Pop Out Messages
+      <span class="clickable"></span>
+    </a>
+    <img src="images/roadshow/sidebar-all.png">
+    <div class="messages-scroll">
+      <img src="images/roadshow/messages-all.png">
+    </div>
+  </div>
+</div>
+
+<div id="research" class="img research slide">
+  <img src="images/roadshow/research.png">
+</div>
+
+<div id="controls" class="img controls z-10">
+  <div id="plan-controls" class="img visible plan-controls">
+    <span id="tour-plan-link" class="abs plan-link"></span>
+    <a id="rfp-overlay-toggle" class="abs js-toggle rfp-overlay-toggle" href="#rfp-overlay">
+      <span class="clickable"></span>
+    </a>
+    <a id="io-overlay-toggle" class="abs js-toggle io-overlay-toggle" href="#io-overlay">
+      <span class="clickable"></span>
+    </a>
+    <a id="export-overlay-toggle" class="abs js-toggle export-overlay-toggle" href="#export-overlay">
+      <span class="clickable"></span>
+    </a>
+    <a class="abs js-toggle plan-tooltip-toggle focusable" href="#plan-tooltip">
+      <span class="content"></span>
+      <span class="clickable"></span>
+    </a>
+    <a class="abs plan-edit-toggle focusable" href="#plan-edit">
+      <span class="content">Edit Plan</span>
+      <span class="clickable"></span>
+    </a>
+
+    <a class="abs js-link js-img-change contract-link" data-imgChangeTactics="#contract-body" data-imgChangeGraphs="#contract-graphs" href="#contract-controls">
+      <span class="clickable"></span>
+    </a>
+    <div id="plan-tooltip" class="abs img plan-tooltip">
+      <img src="images/roadshow/plan-tooltip.png">
+    </div>
+    <img src="images/roadshow/plan-controls.png">
+  </div>
+  <div id="contract-controls" class="img contract-controls">
+    <span id="tour-contract-link" class="abs contract-link"></span>
+    <a class="abs js-toggle contract-tooltip-toggle focusable" href="#contract-tooltip">
+      <span class="content">Column Settings</span>
+      <span class="clickable"></span>
+    </a>
+    <a class="abs js-link js-img-change plan-link" data-imgChangeTactics="#plan-body" data-imgChangeGraphs="#plan-graphs" href="#plan-controls">
+      <span class="clickable"></span>
+    </a>
+    <div id="contract-tooltip" class="abs img contract-tooltip">
+      <img src="images/roadshow/contract-tooltip.png">
+    </div>
+    <img src="images/roadshow/contract-controls.png">
+  </div>
+</div>
+
+<div id="tactics" class="img rel ovh">
+  <div id="plan-body" class="visible plan-body">
+    <img src="images/roadshow/plan-body.png">
+  </div>
+  <div id="plan-edit" class="plan-edit">
+    <img src="images/roadshow/plan-edit.png">
+  </div>
+  <div id="contract-body" class="contract-body">
+    <img src="images/roadshow/contract-body.png">
+  </div>
+</div>
+
+<div id="rfp-overlay" class="img rfp-overlay">
+  <div id="rfp-modal" class="img abs modal">
+    <a class="abs js-toggle overlay-close-toggle" href="#rfp-overlay">
+      <span class="clickable"></span>
+    </a>
+    <a class="abs js-toggle overlay-send-close-toggle" href="#rfp-overlay">
+      <span class="clickable"></span>
+    </a>
+    <a class="abs js-toggle rfp-overlay-panel-toggle" href="#rfp-panel">
+      <span class="clickable"></span>
+    </a>
+    <a class="abs js-toggle rfp-overlay-dropdown-toggle" href="#rfp-dropdown">
+      <span class="clickable"></span>
+    </a>
+    <div id="rfp-dropdown" class="abs img rfp-dropdown">
+      <img src="images/roadshow/rfp-dropdown.png">
+    </div>
+    <img src="images/roadshow/rfp-modal.png">
+    <div id="rfp-panel" class="abs img rfp-panel ovh">
+      <a class="abs js-toggle rfp-overlay-nested-panel-toggle" href="#rfp-panel">
+        <span class="clickable"></span>
+      </a>
+      <img src="images/roadshow/rfp-panel.png">
+    </div>
+  </div>
+</div>
+
+<div id="io-overlay" class="img io-overlay">
+  <div id="io-modal" class="img abs modal">
+    <a class="abs js-toggle overlay-close-toggle" href="#io-overlay">
+      <span class="clickable"></span>
+    </a>
+    <a class="abs js-toggle overlay-send-close-toggle" href="#io-overlay">
+      <span class="clickable"></span>
+    </a>
+    <img src="images/roadshow/io-modal.png">
+  </div>
+</div>
+
+<div id="export-overlay" class="img export-overlay">
+  <div id="export-modal" class="img abs modal">
+    <a class="abs js-toggle overlay-close-toggle" href="#export-overlay">
+      <span class="clickable"></span>
+    </a>
+    <a class="abs js-toggle overlay-send-close-toggle" href="#export-overlay">
+      <span class="clickable"></span>
+    </a>
+    <img src="images/roadshow/export-modal.png">
+  </div>
+</div>
+
+    </main>
+  </body>
+</html>

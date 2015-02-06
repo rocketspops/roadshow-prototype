@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+  <title>Stacked Grid Prototype with Focus Mode and Subtotals</title>
+  <!-- Defaults -->
+  <link rel="stylesheet" href="/roadshow-prototype/css/default.css">
+  <link rel="stylesheet" href="/roadshow-prototype/css/vendor/ss-standard.css">
+  <link href="/roadshow-prototype/favicon.ico?v=1" rel="shortcut icon" type="image/x-icon" />
+  <script src="/roadshow-prototype/js/vendor/jquery-2.1.1.min.js"></script>
+  <script src="/roadshow-prototype/js/vendor/jquery-function-toggle.js"></script>
+  <!-- Custom Includes -->
+  
+    <link rel="stylesheet" href="/roadshow-prototype/css/stacked-grid.css">
+  
+  
+    <script src="/roadshow-prototype/js/vendor/numeral.min.js"></script>
+  
+    <script src="/roadshow-prototype/js/stacked-grid.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <div class="grid-controls">
+  <button class="js-action js-focus left">Focus Off</button>
+  <button class="js-action js-focus-menu right">
+    <i class="ss-icon">List</i>
+  </button>
+  <form class="focus-controls-menu">
+    <fieldset>
+      <h6>Details</h6>
+      <ul>
+        <li>
+          <input id="name" type="checkbox">
+          <label for="name">Name</label>
+        </li>
+        <li>
+          <input id="platform" type="checkbox">
+          <label for="platform">Platform</label>
+        </li>
+        <li>
+          <input id="format" type="checkbox">
+          <label for="format">Format</label>
+        </li>
+        <li>
+          <input id="size" type="checkbox">
+          <label for="size">Size</label>
+        </li>
+          <input id="position" type="checkbox">
+          <label for="position">Position</label>
+        </li>
+      </ul>
+    </fieldset>
+    <fieldset>
+      <h6>Dates</h6>
+      <ul>
+        <li>
+          <input id="start-date" type="checkbox">
+          <label for="start-date">Start Date</label>
+        </li>
+        <li>
+          <input id="end-date" type="checkbox">
+          <label for="end-date">End Date</label>
+        </li>
+      </ul>
+    </fieldset>
+    <fieldset>
+      <h6>Inventory</h6>
+      <ul>
+        <li>
+          <input id="unit-type" type="checkbox">
+          <label for="unit-type">Unit Type</label>
+        </li>
+        <li>
+          <input id="available" type="checkbox">
+          <label for="available">Available</label>
+        </li>
+        <li>
+          <input id="quantity" type="checkbox">
+          <label for="quantity">Quantity</label>
+        </li>
+        <li>
+          <input id="sov" type="checkbox">
+          <label for="sov">SOV</label>
+        </li>
+      </ul>
+    </fieldset>
+    <fieldset>
+      <h6>Rates</h6>
+      <ul>
+        <li>
+          <input id="cost-type" type="checkbox">
+          <label for="cost-type">Cost Type</label>
+        </li>
+        <li>
+          <input id="media-rate" type="checkbox">
+          <label for="media-rate">Media Rate</label>
+        </li>
+        <li>
+          <input id="margin" type="checkbox">
+          <label for="margin">Margin</label>
+        </li>
+        <li>
+          <input id="client-rate" type="checkbox">
+          <label for="client-rate">Client Rate</label>
+        </li>
+      </ul>
+    </fieldset>
+    <fieldset>
+      <h6>Costs</h6>
+      <ul>
+        <li>
+          <input id="add-on-cost" type="checkbox">
+          <label for="add-on-cost">Add-on Cost</label>
+        </li>
+        <li>
+          <input id="media-cost" type="checkbox">
+          <label for="media-cost">Media Cost</label>
+        </li>
+        <li>
+          <input id="margin-cost" type="checkbox">
+          <label for="margin-cost">Margin Cost</label>
+        </li>
+        <li>
+          <input id="client-cost" type="checkbox">
+          <label for="client-cost">Client Cost</label>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+</div>
+
+
+<div class="grid-wrapper">
+  
+  <table id="">
+    <colgroup>
+      <col class="name">
+      <col class="details">
+      <col class="dates">
+      <col class="contracted">
+      <col class="rates">
+      <col class="costs">
+    </colgroup>
+    <thead>
+      <tr>
+        <th class="name">Travel and Leisure</th>
+        <th class="details">Details</th>
+        <th class="dates">Dates</th>
+        <th class="contracted">Inventory</th>
+        <th class="rates">Rates</th>
+        <th class="costs">Costs</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+      <td class="name">
+        <ul>
+          <li class="name"><i class="js-action js-flag flag ss-icon">flag</i>weather/travel/entertainment/news-chicago DMA</li>
+        </ul>
+      </td>
+      <td class="details">
+        <ul>
+          <li class="platform" data-label="platform">Tablet App</li>
+          <li class="format" data-label="format">Display</li>
+          <li class="size" data-label="size">160×600</li>
+          <li class="position" data-label="position">ATF</li>
+        </ul>
+      </td>
+      <td class="dates">
+        <ul>
+          <li class="start-date" data-label="starts">2/1/15</li>
+          <li class="end-date" data-label="ends">2/28/15</li>
+        </ul>
+      </td>
+      <td class="contracted">
+        <ul>
+          <li class="unit-type" data-label="unit type">Click</li>
+          <li class="total" data-label="total">--</li>
+          <li class="available" data-label="available">600,000</li>
+          <li class="quantity" data-label="quantity">5,000</li>
+          <li class="sov" data-label="SOV">--</li>
+        </ul>
+      </td>
+      <td class="rates">
+        <ul>
+          <li class="cost-type" data-label="rate type">CPC</li>
+          <li class="media-rate" data-label="media">$2.75</li>
+          <li class="margin" data-label="margin">10%</li>
+          <li class="client-rate" data-label="client">$3.05</li>
+        </ul>
+      </td>
+      <td class="costs">
+        <ul>
+          <li class="add-on-cost" data-label="add-on">$5.00</li>
+          <li class="media-cost" data-label="media">$13,750.00</li>
+          <li class="margin-cost" data-label="margin">$1,527.78</li>
+          <li class="client-cost" data-label="client">$15,277.78</li>
+        </ul>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="name">
+        <ul>
+          <li class="name"><i class="js-action js-flag flag ss-icon">flag</i>Travel Entertainment Women’s Channel / Geo: Chicago</li>
+        </ul>
+      </td>
+      <td class="details">
+        <ul>
+          <li class="platform" data-label="platform">Web Browser</li>
+          <li class="format" data-label="format">Display</li>
+          <li class="size" data-label="size">300×250</li>
+          <li class="position" data-label="position">ATF</li>
+        </ul>
+      </td>
+      <td class="dates">
+        <ul>
+          <li class="start-date" data-label="starts">2/1/15</li>
+          <li class="end-date" data-label="ends">2/28/15</li>
+        </ul>
+      </td>
+      <td class="contracted">
+        <ul>
+          <li class="unit-type" data-label="unit type">Impression</li>
+          <li class="total" data-label="total">750,000</li>
+          <li class="available" data-label="available">600,000</li>
+          <li class="quantity" data-label="quantity">305,000</li>
+          <li class="sov" data-label="SOV">40.67%</li>
+        </ul>
+      </td>
+      <td class="rates">
+        <ul>
+          <li class="cost-type" data-label="rate type">CPM</li>
+          <li class="media-rate" data-label="media">$7.50</li>
+          <li class="margin" data-label="margin">10%</li>
+          <li class="client-rate" data-label="client">$8.38</li>
+        </ul>
+      </td>
+      <td class="costs">
+        <ul>
+          <li class="add-on-cost" data-label="add-on">$15.25</li>
+          <li class="media-cost" data-label="media">$2,287.50</li>
+          <li class="margin-cost" data-label="margin">$254.17</li>
+          <li class="client-cost" data-label="client">$2,556.92</li>
+        </ul>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="name">
+        <ul>
+          <li class="name"><i class="js-action js-flag flag ss-icon">flag</i>Affluent Female - Travel Enthusiast Premium Display</li>
+        </ul>
+      </td>
+      <td class="details">
+        <ul>
+          <li class="platform" data-label="platform">Web Browser</li>
+          <li class="format" data-label="format">Display</li>
+          <li class="size" data-label="size">300×250</li>
+          <li class="position" data-label="position">ATF</li>
+        </ul>
+      </td>
+      <td class="dates">
+        <ul>
+          <li class="start-date" data-label="starts">2/1/15</li>
+          <li class="end-date" data-label="ends">2/28/15</li>
+        </ul>
+      </td>
+      <td class="contracted">
+        <ul>
+          <li class="unit-type" data-label="unit type">Impression</li>
+          <li class="total" data-label="total">750,000</li>
+          <li class="available" data-label="available">600,000</li>
+          <li class="quantity" data-label="quantity">225,000</li>
+          <li class="sov" data-label="SOV">30.00%</li>
+        </ul>
+      </td>
+      <td class="rates">
+        <ul>
+          <li class="cost-type" data-label="rate type">CPM</li>
+          <li class="media-rate" data-label="media">$9.00</li>
+          <li class="margin" data-label="margin">10%</li>
+          <li class="client-rate" data-label="client">$10.05</li>
+        </ul>
+      </td>
+      <td class="costs">
+        <ul>
+          <li class="add-on-cost" data-label="add-on">$11.25</li>
+          <li class="media-cost" data-label="media">$2,025.00</li>
+          <li class="margin-cost" data-label="margin">$225.00</li>
+          <li class="client-cost" data-label="client">$2,261.25</li>
+        </ul>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="name">
+        <ul>
+          <li class="name"><i class="js-action js-flag flag ss-icon">flag</i>Travel and Leisure - Backpacks/Hike/Camp Category</li>
+        </ul>
+      </td>
+      <td class="details">
+        <ul>
+          <li class="platform" data-label="platform">Web Browser</li>
+          <li class="format" data-label="format">Display</li>
+          <li class="size" data-label="size">728×90</li>
+          <li class="position" data-label="position">BTF</li>
+        </ul>
+      </td>
+      <td class="dates">
+        <ul>
+          <li class="start-date" data-label="starts">2/1/15</li>
+          <li class="end-date" data-label="ends">2/28/15</li>
+        </ul>
+      </td>
+      <td class="contracted">
+        <ul>
+          <li class="unit-type" data-label="unit type">Impression</li>
+          <li class="total" data-label="total">1,500,000</li>
+          <li class="available" data-label="available">600,000</li>
+          <li class="quantity" data-label="quantity">575,000</li>
+          <li class="sov" data-label="SOV">38.33%</li>
+        </ul>
+      </td>
+      <td class="rates">
+        <ul>
+          <li class="cost-type" data-label="rate type">CPM</li>
+          <li class="media-rate" data-label="media">$13.00</li>
+          <li class="margin" data-label="margin">10%</li>
+          <li class="client-rate" data-label="client">$14.95</li>
+        </ul>
+      </td>
+      <td class="costs">
+        <ul>
+          <li class="add-on-cost" data-label="add-on">$28.75</li>
+          <li class="media-cost" data-label="media">$7,475.00</li>
+          <li class="margin-cost" data-label="margin">$830.56</li>
+          <li class="client-cost" data-label="client">$8,334.31</li>
+        </ul>
+      </td>
+    </tr>
+    
+    <tr class="subtotals">
+      <td colspan="3" class="name">
+        <ul>
+          <li class="name">Subtotals for Travel and Leisure</li>
+        </ul>
+      </td>
+      <td class="contracted">
+        <ul>
+          <li class="quantity" data-total="impressions"></li>
+          <li class="quantity" data-total="clicks"></li>
+        </ul>
+      </td>
+      <td class="rates">
+        <ul>
+          <li class="media-rate" data-total="eCPM media"></li>
+          <li class="client-rate" data-total="eCPM client"></li>
+          <li class="media-rate" data-total="eCPC media"></li>
+          <li class="client-rate" data-total="eCPC client"></li>
+        </ul>
+      </td>
+      <td class="costs">
+        <ul>
+          <li class="add-on-cost" data-total="add-on"></li>
+          <li class="media-cost" data-total="media"></li>
+          <li class="margin-cost" data-total="margin"></li>
+          <li class="client-cost" data-total="client"></li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+  
+  <table id="">
+    <colgroup>
+      <col class="name">
+      <col class="details">
+      <col class="dates">
+      <col class="contracted">
+      <col class="rates">
+      <col class="costs">
+    </colgroup>
+    <thead>
+      <tr>
+        <th class="name">Trip Advisor</th>
+        <th class="details">Details</th>
+        <th class="dates">Dates</th>
+        <th class="contracted">Inventory</th>
+        <th class="rates">Rates</th>
+        <th class="costs">Costs</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+      <td class="name">
+        <ul>
+          <li class="name"><i class="js-action js-flag flag ss-icon">flag</i>Run of Slate News & Lifestyle_Geo-Targeted: Oregon</li>
+        </ul>
+      </td>
+      <td class="details">
+        <ul>
+          <li class="platform" data-label="platform">Mobile App</li>
+          <li class="format" data-label="format">Display</li>
+          <li class="size" data-label="size">180×150</li>
+          <li class="position" data-label="position">ATF</li>
+        </ul>
+      </td>
+      <td class="dates">
+        <ul>
+          <li class="start-date" data-label="starts">2/1/15</li>
+          <li class="end-date" data-label="ends">2/28/15</li>
+        </ul>
+      </td>
+      <td class="contracted">
+        <ul>
+          <li class="unit-type" data-label="unit type">Click</li>
+          <li class="total" data-label="total">--</li>
+          <li class="available" data-label="available">600,000</li>
+          <li class="quantity" data-label="quantity">5,000</li>
+          <li class="sov" data-label="SOV">--</li>
+        </ul>
+      </td>
+      <td class="rates">
+        <ul>
+          <li class="cost-type" data-label="rate type">CPC</li>
+          <li class="media-rate" data-label="media">$2.50</li>
+          <li class="margin" data-label="margin">10%</li>
+          <li class="client-rate" data-label="client">$2.78</li>
+        </ul>
+      </td>
+      <td class="costs">
+        <ul>
+          <li class="add-on-cost" data-label="add-on">$5.00</li>
+          <li class="media-cost" data-label="media">$12,500.00</li>
+          <li class="margin-cost" data-label="margin">$1,388.89</li>
+          <li class="client-cost" data-label="client">$13,893.89</li>
+        </ul>
+      </td>
+    </tr>
+    
+    <tr class="subtotals">
+      <td colspan="3" class="name">
+        <ul>
+          <li class="name">Subtotals for Trip Advisor</li>
+        </ul>
+      </td>
+      <td class="contracted">
+        <ul>
+          <li class="quantity" data-total="impressions"></li>
+          <li class="quantity" data-total="clicks"></li>
+        </ul>
+      </td>
+      <td class="rates">
+        <ul>
+          <li class="media-rate" data-total="eCPM media"></li>
+          <li class="client-rate" data-total="eCPM client"></li>
+          <li class="media-rate" data-total="eCPC media"></li>
+          <li class="client-rate" data-total="eCPC client"></li>
+        </ul>
+      </td>
+      <td class="costs">
+        <ul>
+          <li class="add-on-cost" data-total="add-on"></li>
+          <li class="media-cost" data-total="media"></li>
+          <li class="margin-cost" data-total="margin"></li>
+          <li class="client-cost" data-total="client"></li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+  
+  <div class="grid-overlay"></div>
+</div>
+
+    </main>
+  </body>
+</html>
