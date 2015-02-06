@@ -730,10 +730,9 @@ input[type="button"].btn-block {
 /* Custom Ovverides */
 
 .btn {
-  font-family: "Source Sans Pro SC", sans-serif;
-  letter-spacing: 0.05em;
+  font-family: "Source Sans Pro", sans-serif;
   padding: 0 6px 1px;
-  text-transform: lowercase;
+  text-transform: capitalize;
 }
 
 .btn-default {

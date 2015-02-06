@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# script to build website and push it to http://innovation.transis.net
+# script to build website and push it to github
 
 # create a tmp dir into which jekyll will build the html source
 if [ -d "/tmp/jekyll_build" ]; then
@@ -14,11 +14,16 @@ bundle exec jekyll build -d /tmp/jekyll_build/
 # publish on github only if jekyll build was successful
 if [ $? -eq 0 ]; then
     cd /tmp/jekyll_build
-    find /tmp/jekyll_build/ -type f -exec chmod 644 {} \;
-    rsync -r /tmp/jekyll_build/* centro@innovation.transis.net:/data/innovation/current/public/prototypes
-    echo "Successfully built and published to http://innovation.transis.net..."
+    git init
+    git add .
+    publish_date=`date`
+    git commit -m "updated site ${publish_date}"
+    git remote add origin git@github.com:rocketspops/roadshow-prototype.git
+    git push origin master:gh-pages -f
+
+    echo "Successfully built and published to github..."
 else
-    echo "Jekyll build failed... not publishing to http://innovation.transis.net"
+    echo "Jekyll build failed... not publishing to github"
 fi
 
 # cleanup
